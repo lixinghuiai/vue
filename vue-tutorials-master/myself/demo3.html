@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			
+		<parent-component></parent-component>
+		</div>
+	</body>
+</html>
+<script src="js/vue.js"></script>
+<script>
+	var child=Vue.extend({
+		template:"<h1>this is child</h1>"
+	})
+	 var parent=Vue.extend({
+	 	template:"<h1>this parent <child></child> </h1>",
+        components:{
+        	"child":child
+        }
+	 })
+	 new Vue({
+	 	el:"#app",
+	 	components:{
+	 		"parent-component":parent
+	 	}
+	 })
+	 /*父子组件*/
+</script>
+

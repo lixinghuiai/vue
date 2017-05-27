@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body id="app">
+		<input type="radio" v-model="mes" value="1" />
+		<input type="radio"  v-model="mes" value="2"/>
+		<input type="radio" v-model="mes"  value="3S"/>
+		<p>{{mes}}</p>
+	</body>
+</html>
+<script src="js/vue.js"></script>
+<script type="text/javascript">
+	new Vue({
+		el:"#app",
+		data:{mes:""}
+	})
+</script>

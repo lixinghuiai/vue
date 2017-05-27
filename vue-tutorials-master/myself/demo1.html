@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.input{display: none;}
+			.list>span{display:block ;}
+			.list>input{display: none;}
+			.lists>span{display:none ;}
+			.lists>input{display: block;}
+		</style>
+	</head>
+	<script src="js/vue.js"></script>
+	<body>
+		
+			
+		<div id="app">
+			<input type="text" v-model="mess"/>
+			<input type="button"  @click="creat"/>
+			 <ul>
+			 	<li class="list" v-for="a in list" :class="{lists:a===todo}" @dblclick="det(a)" >
+			 		<span >{{a.a}}</span>
+			 		<input  v-focus="todo===a"  class="input" type="text" v-model="a.a"/>
+			 	</li>
+			 	
+			 </ul>
+		</div>
+	</body>
+</html>
+
+	<script>
+	var list=[{
+		a:"12"
+	},{a:"12"}]
+	new Vue({
+		el:"#app",
+		data:{list:list,mess:"",todo:"",dd:""},
+		methods:{
+			creat:function(){
+				this.list.push({
+					a:this.mess
+				});
+				
+			},
+			det:function(mess){
+				this.todo=mess;
+				this.dd=mess.a;
+				
+				if(this.lista){
+					this.lista=false;
+				}else{
+					this.lista=true;
+				}
+				
+				
+			}
+		},
+		directives:{
+		"focus":{									
+			update(el,binding){
+				console.log(binding)
+				if(binding.value){
+					el.focus()
+				}
+
+			}
+		}
+		}
+	})
+
+</script>

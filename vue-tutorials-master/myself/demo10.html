@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<ul>
+				<li v-for="i in is" @dblclick="b(i)" track-by="$index">{{i}}</li><!--track-by="$index" 插入重复数据-->
+			</ul>
+			<input type="text"  v-model="atext"/> <input type="button"  @click="cli"/>
+		</div>
+	</body>
+</html>
+<script src="js/vue.js"></script>
+<script>
+	new Vue({
+		el:"#app",
+		data:{
+			is:[1,2,3],
+			atext:"",
+		},
+		methods:{
+			cli:function(){
+				this.is.push(this.atext);
+				this.atext="";
+			},
+			b:function(i){
+				alert(i);
+				this.is.$remove(i);
+			}
+		}
+	})
+</script>

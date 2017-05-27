@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--<div id="app">
+			<ul>
+				<li v-for="i in is">
+					<span>{{i.name}}</span>
+					<span>{{i.sex}}</span>
+					<span>{{i.age}}</span>
+				</li>
+			</ul>
+		</div>-->
+		<!--普通渲染-->
+		<ul id='mount'>
+<li class="form-group" v-for="(key,item) in list">
+    <label>
+            {{key}} {{item.name}}{{item.value}}
+            <input type="text" v-model="item.value" />
+    </label>
+</li>
+</ul>
+<!--对象渲染-->
+	</body>
+</html>
+<script src="js/vue.js"></script>
+<script >
+	
+	/*var vue=new Vue({
+		el:"#app",
+		data:{is:[
+			{name:"li",sex:"1",age:"18"},
+			{name:"xing",sex:"1",age:"18"},
+			{name:"hui",sex:"1",age:"18"},
+		]}
+	})*/
+	new Vue({
+  el: '#mount',
+  data: {
+    list: {
+    	a:{name:'zhangsan',value:'nan',href:'aaa.com'},
+    	b:{name:'zhaosi',value:'nv',href:'bbb.com'}
+   	}
+  }
+})
+</script>
+

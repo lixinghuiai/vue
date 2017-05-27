@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<input type="button" id="but" value="+" @click="a" /> <div id="div">{{count}}</div>
+			<input type="button" id="but" value="-" @click="b" />
+		</div>
+		
+	</body>
+</html>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script src="js/vue.js"></script>
+<script>
+	new Vue({
+		el:"#app",
+		data:{
+			count:"0"
+		},
+		methods:{
+           a:function(){
+           	if(this.count==10){
+           			this.count=10
+           	}else{this.count++}
+           	
+           }, b:function(){
+           	if(this.count==0){
+           			this.count=0
+           	}else{this.count--}
+           	
+           }
+		}
+	});
+	
+</script>

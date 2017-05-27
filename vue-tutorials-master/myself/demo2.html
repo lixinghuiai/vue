@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<my></my>
+		</div>
+	</body>
+</html>
+<script src="js/vue.js"></script>
+	<script>
+	var myComponent=Vue.extend({
+		template:"<h1>dsad</h1>"
+	})
+	 /*局部注册*/
+	 new Vue({
+	 	el:"#app",
+	 	components:{"my":myComponent}
+	 })
+
+</script>

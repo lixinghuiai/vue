@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div class="main">
+    <h3 class="big-title">添加任务：</h3>
+    <input  
+        placeholder="在此添加任务" 
+        class="task-input" 
+        type="text"
+        v-model="things"
+        @keyup.enter="addTodo"
+    />
+    <ul class="task-count" v-show="list.length">
+        <li>
+            {{unCheckedLength}}个任务未完成</li>
+        <li class="action">
+            <a :class="{active: visibility == 'all'}" href="#all">所有任务</a>
+            <a :class="{active: visibility == 'unfinished'}"href="#unfinished">未完成任务</a>
+            <a :class="{active: visibility == 'finished'}"href="#finished">完成任务</a>
+        </li>
+    </ul>
+    <div class="tasks">
+        <span class="no-task-tip" v-show="!list.length">还没有添加任何任务</span>
+        <ul class="todo-list">
+            <li class="todo" v-for="item in filteredList" :class="{completed: item.isChecked,editing:item === editItem}" >
+                <div class="view">
+                    <div class="word">
+                        <input class="toggle" type="checkbox" v-model="item.isChecked" >
+                        <label @dblclick="editTodo(item)">{{item.title}}</label>
+                    </div>
+                    <button class="destroy" type="text" @click="deleteTodo(item)">×</button>
+
+                </div>
+                <input 
+                    v-focus="editItem === item" 
+                    class="edit" 
+                    type="text" 
+                    v-model="item.title"
+                    @blur="edited"
+                    @keyup.enter="edited"
+                    @keyup.esc="cancel(item)"
+                />
+            </li>
+        </ul>
+    </div>
+</div>
+	</body>
+</html>
+<script src="js/vue.js"> </script>
+<script>
+	var vm = new Vue({
+    el: ".main",
+    data: {
+        list:list,
+        things:"",
+        editItem:"",
+        beforeTitle:"",
+        visibility:"all",
+        inputId:"",
+    },  
+    watch:{
+        list:{
+            handler:function(){
+                store.save("todolist",this.list)
+            },
+            deep:true
+        }
+    },
+    computed:{
+        unCheckedLength(){
+            return this.list.filter(function(item){
+                return item.isChecked == false
+            }).length
+        },
+        filteredList(){         
+            return filter[this.visibility] ? filter[this.visibility](this.list) : list
+        }
+    },
+    methods: {
+        addTodo(ev){
+            if(this.things !== ""){
+                var item = {
+                    title:this.things,
+                    isChecked:false,    
+                }
+                this.list.push(item)
+            }               
+            this.things = "";
+        },
+        deleteTodo(item){
+            var index = this.list.indexOf(item);
+            this.list.splice(index,1);
+        },
+        editTodo(item){ 
+            this.beforeTitle = item.title;
+            this.editItem = item
+        },
+        edited(item){
+            this.editItem = ""
+        },
+        cancel(item){
+            item.title =  this.beforeTitle;
+            this.editItem = "";
+            this.beforeTitle = ""
+        }
+    },
+    directives:{
+        "focus":{                                   
+            update(el,binding){
+                if(binding.value){
+                    el.focus()
+                }
+
+            }
+        }
+    }
+});
+</script>

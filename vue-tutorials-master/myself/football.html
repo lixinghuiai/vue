@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		 <div id="app">
+        <h1>比赛时间{{time}}s</h1>
+        <h2>直播播报{{result}}</h2>
+        <div>
+             <p>中国队进球数：{{team.china}}</p>
+             <button @click="team.china++">点击中国队进一球</button>
+             <p>韩国队进球数：{{team.korea}}</p>
+             <button @click="team.korea++">点击韩国队进一球</button>
+        </div>
+   </div>
+	</body>
+</html>
+<script src="js/vue.js"></script>
+<script>
+	  new Vue({
+	  	"created":function(){
+	  		let time=setInterval(()=>{
+	  			this.time++;
+	  			if(this.time==90){
+	  		   clearInterval(time)
+	  			}
+	  		},100)
+	  	},
+	  	el:"#app",
+	  	data:{
+	  		time:0,
+	  		result:"",
+	  		team:{china:0,korea:0}
+	 
+	  		
+	  	},computed:{
+			  result: function() {
+               if(this.time<90){
+               	if(this.team.china>this.team.korea){
+               		 return '中国队领先'
+               	}else if(this.team.china==this.team.korea){
+               		return '僵持中'
+               	}else{
+               		return '韩国队领先'
+               	}
+               }else{
+               	if(this.team.china>this.team.korea){
+               		 return 'win'
+               	}else if(this.team.china==this.team.korea){
+               		return 'draw'
+               	}else{
+               		return 'lose'
+               	}
+               }
+            }
+		}
+	  })
+</script>

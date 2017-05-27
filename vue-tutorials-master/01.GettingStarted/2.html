@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<link rel="stylesheet" href="styles/demo.css" />
+	<body>
+		<div id="app">
+			<ul class="pagination">
+			<li v-for="n in pageCount">
+				<a href="#" v-bind:class="active:activeNumber==n+1"  @click="a($index)">{{n+1}}</a>
+			</li>
+			</ul>
+		</div>
+	</body>
+</html>
+<script src="js/vue.js"></script>
+<script>
+	new Vue({
+		el:"#app",
+		data:{
+			activeNumber:1,
+			pageCount:10
+		},
+		methods:{
+			a:function($index){
+				this.activeNumber=$index+1
+			}
+		}
+	})
+</script>

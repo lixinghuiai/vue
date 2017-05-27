@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+		<textarea v-model="mes" :maxlength="num"> </textarea>
+		<p>你还可以输出{{contentnum}}字</p>
+			
+		</div>
+	</body>
+</html>
+<script src="js/vue.js"></script>
+<script>
+	new Vue({
+		el:"#app",
+		data:{
+			mes:"",
+			num:"10"
+		},
+		computed:{
+			  contentnum () {
+                return this.num - this.mes.length
+            }
+		}
+	})
+</script>

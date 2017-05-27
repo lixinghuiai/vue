@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body id="app">
+		<input type="checkbox" v-model="num.a" />
+			<input type="checkbox" v-model="num.b"/>
+				<input type="checkbox" v-model="num.c"/>
+				<div>{{num | json}}</div>
+	</body>
+</html>
+<script src="js/vue.js"></script>
+<script>
+	new Vue({
+		el:"#app",
+		data:{num:{
+			a:false,
+		    b:false,
+		    c:false
+		}}
+	})
+</script>

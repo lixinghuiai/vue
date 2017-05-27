@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.active{color: red;}
+			.box{position: relative;}
+			
+			.box li{position: absolute;top: 0;left: 0;width: 100px;height: 100px;display: none;} 
+			.on{display: block !important;}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<div>
+				<a href="#" v-for=" (index,i) in is" @click="a(index)" :class="{active:active==index}">{{i}}</a>
+				
+			</div>
+			<div class="box">
+				<ul>
+					<li v-for="(index,b) in bs " :class="{on:on==index}">{{b}}</li>
+				</ul>
+			</div>
+		</div>
+	</body>
+</html>
+<script src="js/vue.js"></script>
+<script >
+	new Vue({
+		el:"#app",
+		data:{
+			is:[1,2,3],
+			bs:[11,22,33],
+			active:"",
+			on:0
+		},
+		methods:{
+			a:function(index){
+				
+				this.active=index;
+				this.on=index;
+			}
+		}
+	})
+</script>

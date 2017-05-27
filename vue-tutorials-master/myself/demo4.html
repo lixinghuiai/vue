@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			
+		<parent-component></parent-component>
+		</div>
+		<div id="app1">
+			<my></my>
+			<ff></ff>
+		</div>
+	</body>
+</html>
+<script src="js/vue.js"></script>
+<script>
+  Vue.component("parent-component",{
+  	template:"sfdkjsdklfj"
+  })
+  var a1= new Vue({
+  	el:"#app"
+  })
+var a2=new Vue({
+  	el:"#app1",
+  	components:{
+  		/*局部注册*/
+  		"my":{
+  			template:"sadfdssdf"
+  		},
+  		"ff":{
+  			template:"54211252"
+  		}
+  	}
+  })
+  
+</script>
+

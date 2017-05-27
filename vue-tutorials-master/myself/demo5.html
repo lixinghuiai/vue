@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			
+		<my></my>
+		</div>
+		<template id="com">
+			<h1>爱的色放反倒是</h1>
+		</template>
+	</body>
+</html>
+<script src="js/vue.js"></script>
+<script>
+ 
+var a2=new Vue({
+  	el:"#app",
+  	components:{
+  		/*局部注册*/
+  		"my":{
+  			template:"#com"
+  		}
+  	}
+  })
+  
+</script>
+

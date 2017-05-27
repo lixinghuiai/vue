@@ -1,0 +1,56 @@
+<body>
+
+		<div id="app">
+			<table>
+				<tbody><tr>
+					<th colspan="2">
+						子组件数据
+					</th>
+				</tr>
+				<tr>
+					<td>my name</td>
+					<td>keepfool</td>
+				</tr>
+				<tr>
+					<td>my age</td>
+					<td>28</td>
+				</tr>
+			</tbody></table>
+		</div>
+
+		<template id="myComponent">
+			<table>
+				<tbody><tr>
+					<th colspan="2">
+						子组件数据
+					</th>
+				</tr>
+				<tr>
+					<td>my name</td>
+					<td>{{ myName }}</td>
+				</tr>
+				<tr>
+					<td>my age</td>
+					<td>{{ myAge }}</td>
+				</tr>
+			</tbody></table>
+		</template>
+	
+	<script src="js/vue.js"></script>
+	<script>
+		var vm = new Vue({
+			el: '#app',
+			data: {
+				name: 'keepfool',
+				age: 28
+			},
+			components: {
+				'my-component': {
+					template: '#myComponent',
+					props: ['myName', 'myAge']
+				}
+			}
+		})
+	</script>
+
+</body>

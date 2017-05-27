@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app" >
+			<my v-bind:c="a"></my>
+			
+		</div>
+		<template id="myComponent">
+			<h1>{{c}}</h1>
+		</template>
+	</body>
+</html>
+<script src="js/vue.js"></script>
+<script>
+	new Vue({
+		el:"#app",
+		data:{a:"1548131541341"},
+		components:{
+		  "my":{
+		  	template:"#myComponent",
+		  	props:["c"]
+		  }
+		}
+		
+		
+	})
+</script>

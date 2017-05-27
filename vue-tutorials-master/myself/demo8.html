@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<ul id="app">
+			<li v-for=" item in items"> {{item.item}}</li>
+		</ul>
+	</body>
+</html>
+<script src="js/vue.js"></script>
+<script>
+	new Vue({
+		el:"#app",
+		data:{
+		items:[
+		{item:"1"},
+		{item:"1"},
+		{item:"1"},
+		{item:"1"},
+		]
+		}
+	})
+</script>
